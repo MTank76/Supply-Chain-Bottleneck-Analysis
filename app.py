@@ -33,36 +33,14 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        file_id = '16pTRmYdTNdWErHN4a0F9N_8mwva94bLE'
-        
-        # This specific URL format bypasses the large-file virus scan warning
-        url = f'https://drive.google.com/uc?export=download&id={file_id}&confirm=t'
-        
-        # Load with latin1 encoding and the bypass URL
-        df = pd.read_csv(url, encoding='latin1')
-
-        # --- DYNAMIC COLUMN MAPPING ---
-        cols = {col.lower(): col for col in df.columns}
-        
-        real_col = cols.get('days for shipping (real)') or cols.get('days for shipping')
-        sched_col = cols.get('days for shipment (scheduled)') or cols.get('days for shipment')
-        date_col = cols.get('order date (dateorders)') or cols.get('order date')
-
-        if not real_col or not sched_col:
-            st.error("Critical logistics columns not found in dataset.")
-            return None
-
-        # Re-calculating logic
-        df['Is_Bottleneck'] = df[real_col] > df[sched_col]
-        df['Order Date'] = pd.to_datetime(df[date_col] if date_col else None, errors='coerce')
-        df['Shipment_Delay'] = df[real_col] - df[sched_col]
+        df = pd.read_csv('Processed_Supply_Chain_Data.csv')
+        df['Order Date'] = pd.to_datetime(df['order date (DateOrders)'])
+        df['Shipment_Delay'] = df['Days for shipping (real)'] - df['Days for shipment (scheduled)']
         df['Bottleneck_Status'] = df['Is_Bottleneck'].map({True: 'Bottleneck', False: 'On-Time'})
-        
         return df
-    except Exception as e:
-        st.error(f"Cloud Data Feed Error: {e}")
+    except FileNotFoundError:
+        st.error("Data file not found. Please ensure 'Processed_Supply_Chain_Data.csv' is in the directory.")
         return None
-
 
 df = load_data()
 
