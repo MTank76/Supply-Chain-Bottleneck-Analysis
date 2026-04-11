@@ -33,14 +33,11 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        # Your specific Google Drive File ID extracted from the link
         file_id = '1J5z_lSYhSsi5DdQ5ZyFFhdgmCzsER5rP'
-        
-        # Direct Download URL construction
         url = f'https://drive.google.com/uc?export=download&id={file_id}'
         
-        # Loading the data directly from the cloud
-        df = pd.read_csv(url)
+        # ADD THE ENCODING PARAMETER HERE
+        df = pd.read_csv(url, encoding='latin1') 
         
         # Standard Processing
         df['Order Date'] = pd.to_datetime(df['order date (DateOrders)'])
@@ -51,7 +48,6 @@ def load_data():
     except Exception as e:
         st.error(f"Cloud Data Feed Error: {e}")
         return None
-
 df = load_data()
 
 if df is not None:
