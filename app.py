@@ -31,29 +31,35 @@ st.markdown("""
 
 # 3. DATA ENGINE
 @st.cache_data
+@st.cache_data
 def load_data():
     try:
-        # UPDATED FILE ID
         file_id = '16pTRmYdTNdWErHN4a0F9N_8mwva94bLE'
         url = f'https://drive.google.com/uc?export=download&id={file_id}'
-        
-        # Use latin1 encoding to handle special characters in the international data
         df = pd.read_csv(url, encoding='latin1')
+
+        # --- DYNAMIC COLUMN MAPPING ---
+        # We look for the "Real Days" and "Scheduled Days" regardless of capitalization
+        cols = {col.lower(): col for col in df.columns}
         
-        # Re-calculating the bottleneck logic in case it's the raw version
-        if 'Is_Bottleneck' not in df.columns:
-            df['Is_Bottleneck'] = df['Days for shipping (real)'] > df['Days for shipment (scheduled)']
-        
-        # Date and Metric Processing
-        df['Order Date'] = pd.to_datetime(df['order date (DateOrders)'])
-        df['Shipment_Delay'] = df['Days for shipping (real)'] - df['Days for shipment (scheduled)']
+        real_col = cols.get('days for shipping (real)') or cols.get('days for shipping')
+        sched_col = cols.get('days for shipment (scheduled)') or cols.get('days for shipment')
+
+        if not real_col or not sched_col:
+            st.error(f"Missing critical columns. Found: {list(df.columns)[:5]}...")
+            return None
+
+        # Re-calculating logic using the detected columns
+        df['Is_Bottleneck'] = df[real_col] > df[sched_col]
+        df['Order Date'] = pd.to_datetime(df['order date (DateOrders)'], errors='coerce')
+        df['Shipment_Delay'] = df[real_col] - df[sched_col]
         df['Bottleneck_Status'] = df['Is_Bottleneck'].map({True: 'Bottleneck', False: 'On-Time'})
         
         return df
     except Exception as e:
         st.error(f"Cloud Data Feed Error: {e}")
         return None
-        
+
 df = load_data()
 
 if df is not None:
