@@ -33,8 +33,8 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        file_id = '1J5z_lSYhSsi5DdQ5ZyFFhdgmCzsER5rP'
-        url = f'https://drive.google.com/uc?export=download&id={file_id}'
+        file_id = '16pTRmYdTNdWErHN4a0F9N_8mwva94bLE'
+        url = f'https://drive.google.com/file/d//view?usp=sharing={file_id}'
         
         # ADD THE ENCODING PARAMETER HERE
         df = pd.read_csv(url, encoding='latin1') 
