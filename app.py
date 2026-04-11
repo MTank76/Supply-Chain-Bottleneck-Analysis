@@ -33,13 +33,23 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        df = pd.read_csv('Processed_Supply_Chain_Data.csv')
+        # Your specific Google Drive File ID extracted from the link
+        file_id = '1J5z_lSYhSsi5DdQ5ZyFFhdgmCzsER5rP'
+        
+        # Direct Download URL construction
+        url = f'https://drive.google.com/uc?export=download&id={file_id}'
+        
+        # Loading the data directly from the cloud
+        df = pd.read_csv(url)
+        
+        # Standard Processing
         df['Order Date'] = pd.to_datetime(df['order date (DateOrders)'])
         df['Shipment_Delay'] = df['Days for shipping (real)'] - df['Days for shipment (scheduled)']
         df['Bottleneck_Status'] = df['Is_Bottleneck'].map({True: 'Bottleneck', False: 'On-Time'})
+        
         return df
-    except FileNotFoundError:
-        st.error("Data file not found. Please ensure 'Processed_Supply_Chain_Data.csv' is in the directory.")
+    except Exception as e:
+        st.error(f"Cloud Data Feed Error: {e}")
         return None
 
 df = load_data()
