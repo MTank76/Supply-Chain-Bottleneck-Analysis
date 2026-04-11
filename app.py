@@ -33,7 +33,7 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        df = pd.read_csv('Processed_Supply_Chain_Data.csv')
+        df = pd.read_csv('Processed_Supply_Chain_Data.csv.gz')
         df['Order Date'] = pd.to_datetime(df['order date (DateOrders)'])
         df['Shipment_Delay'] = df['Days for shipping (real)'] - df['Days for shipment (scheduled)']
         df['Bottleneck_Status'] = df['Is_Bottleneck'].map({True: 'Bottleneck', False: 'On-Time'})
