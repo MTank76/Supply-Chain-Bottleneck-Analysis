@@ -1,6 +1,5 @@
 # 📦 Chainpulse : Supply Chain Bottleneck Analytics
 
----
 
 # 🚀 Business Use Case: Predictive Supply Chain Risk & Bottleneck Analytics
 
