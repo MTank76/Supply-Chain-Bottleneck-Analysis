@@ -1,9 +1,10 @@
 # 📦 Chainpulse : Supply Chain Bottleneck Analytics
 
 
-# 🚀 Business Use Case: Predictive Supply Chain Risk & Bottleneck Analytics
+# 🚀 Business Use Case : 
+Predictive Supply Chain Risk & Bottleneck Analytics
 
-The primary goal of this project is to provide logistics managers and procurement officers with a predictive engine to identify "at-risk" shipments and inventory bottlenecks before they disrupt operations. The application quantifies the impact of variables like shipping modes, regional market volatility, and category-specific lead times.
+The primary goal of this project is to provide logistics managers and procurement officers with a predictive engine to identify "at-risk" shipments and inventory bottlenecks before they disrupt operations. This project focuses on identifying and analyzing **supply chain bottlenecks** using data-driven insights. By comparing actual shipping times against scheduled timelines, this analysis pinpointed delays across different shipping modes, markets, and product categories. The goal is to provide actionable intelligence to optimize logistics efficiency and enhance customer satisfaction.
 
 **Wider Industry Applications:** The logic used in this project can be adapted for several high-value supply chain environments:
 * **Manufacturing (JIT):** Predicting delays in raw material arrivals to prevent production line downtime.
@@ -12,6 +13,20 @@ The primary goal of this project is to provide logistics managers and procuremen
 * **Last-Mile Delivery:** Predicting delivery failures or delays in urban zones based on courier density and historical traffic patterns.
 * **Freight Forwarding:** Using ensemble models to predict transit time variability across sea, air, and land freight.
 
+---
+
+## 📊 Dataset Description
+
+The analysis uses the **DataCo Smart Supply Chain Dataset**, which includes typical supply chain activities such as provisioning, production, sales, and commercial distribution.
+
+  - **Key Features Used:**
+      - `Days for shipping (real)`: The actual time taken to deliver.
+      - `Days for shipment (scheduled)`: The promised delivery time.
+      - `Shipping Mode`: Standard Class, First Class, Second Class, Same Day.
+      - `Market`: Pacific Asia, USCA, Africa, Europe, LATAM.
+      - `Order Status`: Status of the order delivery.
+      - `Product Price` & `Category Name`: Details regarding the items sold.
+   
 ---
 
 # 🛠️ The Approach & Methodology
@@ -26,30 +41,20 @@ The problem was approached as a **Risk Estimation and Bottleneck Classification*
 
 ---
 
-## 📌 Project Overview
+## ⚙️ Data Pipeline
 
-This project focuses on identifying and analyzing **supply chain bottlenecks** using data-driven insights. By comparing actual shipping times against scheduled timelines, this analysis pinpointed delays across different shipping modes, markets, and product categories. The goal is to provide actionable intelligence to optimize logistics efficiency and enhance customer satisfaction.
+1.  **Data Cleaning:** \* Handling missing values in `Customer Zipcode` and `Product Description`.
+      * Converting `order_date` and `shipment_date` to datetime objects.
+      * Stripping whitespace from column headers for consistent indexing.
+2.  **Feature Engineering:**
+      * `Shipment_Delay`: Calculated as `Real Days - Scheduled Days`.
+      * `Is_Bottleneck`: Boolean flag indicating if a delay occurred.
+      * `Internal_Processing_Time`: Time difference between order date and shipment date.
+3.  **Exploratory Data Analysis (EDA):**
+      * Distribution of shipping days across different markets.
+      * Correlation analysis between Product Price and Shipping Speed.
+      * Proportion analysis using Donut charts and Countplots.
 
-## 📊 Dataset Description
-
-The analysis uses the **DataCo Smart Supply Chain Dataset**, which includes typical supply chain activities such as provisioning, production, sales, and commercial distribution.
-
-  - **Key Features Used:**
-      - `Days for shipping (real)`: The actual time taken to deliver.
-      - `Days for shipment (scheduled)`: The promised delivery time.
-      - `Shipping Mode`: Standard Class, First Class, Second Class, Same Day.
-      - `Market`: Pacific Asia, USCA, Africa, Europe, LATAM.
-      - `Order Status`: Status of the order delivery.
-      - `Product Price` & `Category Name`: Details regarding the items sold.
-
-## 🛠️ Tech Stack
-
-  * **Language:** Python
-  * **Libraries:** \* `Pandas`: Data manipulation and cleaning.
-      * `Matplotlib` & `Seaborn`: Advanced data visualization.
-      * `NumPy`: Numerical operations.
-      * `Streamlit` (Imported for future dashboard integration).
-   
 ---
 
 ## 🚀 Key Findings from Analysis
@@ -84,20 +89,13 @@ Based on the notebook execution, the following findings were discovered:
 └── README.md                     # Project documentation
 ```
 ---
+## 🛠️ Tech Stack
 
-## ⚙️ Data Pipeline
-
-1.  **Data Cleaning:** \* Handling missing values in `Customer Zipcode` and `Product Description`.
-      * Converting `order_date` and `shipment_date` to datetime objects.
-      * Stripping whitespace from column headers for consistent indexing.
-2.  **Feature Engineering:**
-      * `Shipment_Delay`: Calculated as `Real Days - Scheduled Days`.
-      * `Is_Bottleneck`: Boolean flag indicating if a delay occurred.
-      * `Internal_Processing_Time`: Time difference between order date and shipment date.
-3.  **Exploratory Data Analysis (EDA):**
-      * Distribution of shipping days across different markets.
-      * Correlation analysis between Product Price and Shipping Speed.
-      * Proportion analysis using Donut charts and Countplots.
+  * **Language:** Python
+  * **Libraries:** \* `Pandas`: Data manipulation and cleaning.
+      * `Matplotlib` & `Seaborn`: Advanced data visualization.
+      * `NumPy`: Numerical operations.
+      * `Streamlit` (Imported for future dashboard integration).
 
 ---
 
