@@ -106,18 +106,17 @@ Based on the notebook execution, the following findings were discovered:
     cd Supply-Chain-Bottleneck-Analysis
     ```
 2. **Install Dependencies**
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+   pip install -r requirements.txt
+   ```
 
 3.  **Run the Notebook:**
     Open `scba.ipynb` in Jupyter Notebook or VS Code and run all cells.
 
 4. Fire up the Dashboard**
-
-```bash
-streamlit run app.py
-```
+   ```bash
+   streamlit run app.py
+  ```
 
 > **Quick Start:** `pip install -r requirements.txt && streamlit run app.py`
     
