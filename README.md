@@ -81,11 +81,12 @@ Based on the notebook execution, the following findings were discovered:
 ## 📂 Project Structure
 
 ```bash
-├── scba.ipynb                    # Main Jupyter Notebook with analysis & plots
+├── scba.ipynb                       # Main Jupyter Notebook with analysis & plots
 ├── Data/
 │   └── DataCoSupplyChainDataset.csv  # Raw Input Data (Source)
-├── Processed_Supply_Chain_Data.csv # Cleaned data exported after analysis
-└── README.md                     # Project documentation
+├── Processed_Supply_Chain_Data.csv   # Cleaned data exported after analysis
+└── app.py                            # Dashboard Connections(Streamlit)
+└── README.md                         # Project documentation
 ```
 ---
 ## 🛠️ Tech Stack
