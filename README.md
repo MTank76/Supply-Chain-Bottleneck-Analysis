@@ -103,13 +103,23 @@ Based on the notebook execution, the following findings were discovered:
 1.  **Clone the Repository:**
     ```bash
     git clone https://github.com/MTank76/Supply-Chain-Bottleneck-Analysis.git
+    cd Supply-Chain-Bottleneck-Analysis
     ```
-2.  **Install Dependencies:**
-    ```bash
-    pip install pandas matplotlib seaborn numpy
-    ```
+2. **Install Dependencies**
+```bash
+pip install -r requirements.txt
+```
+
 3.  **Run the Notebook:**
     Open `scba.ipynb` in Jupyter Notebook or VS Code and run all cells.
+
+4. Fire up the Dashboard**
+
+```bash
+streamlit run app.py
+```
+
+> **Quick Start:** `pip install -r requirements.txt && streamlit run app.py`
     
 ---
 
