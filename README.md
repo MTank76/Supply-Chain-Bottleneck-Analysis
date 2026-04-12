@@ -1,8 +1,7 @@
 # 📦 Chainpulse : Supply Chain Bottleneck Analytics
 
 
-# 🚀 Business Use Case : 
-Predictive Supply Chain Risk & Bottleneck Analytics
+# 🚀 Business Use Case : Predictive Supply Chain Risk & Bottleneck Analytics
 
 The primary goal of this project is to provide logistics managers and procurement officers with a predictive engine to identify "at-risk" shipments and inventory bottlenecks before they disrupt operations. This project focuses on identifying and analyzing **supply chain bottlenecks** using data-driven insights. By comparing actual shipping times against scheduled timelines, this analysis pinpointed delays across different shipping modes, markets, and product categories. The goal is to provide actionable intelligence to optimize logistics efficiency and enhance customer satisfaction.
 
