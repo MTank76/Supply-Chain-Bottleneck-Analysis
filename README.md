@@ -116,10 +116,10 @@ Based on the notebook execution, the following findings were discovered:
 4. Fire up the Dashboard**
    ```bash
    streamlit run app.py
-  ```
-```
+   ```
+
 > **Quick Start:** `pip install -r requirements.txt && streamlit run app.py` 
----
+
 
 ## 🤝 References
 
