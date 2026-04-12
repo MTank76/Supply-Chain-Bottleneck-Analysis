@@ -69,16 +69,12 @@ Based on the notebook execution, the following findings were discovered:
 
 ---
 
-### 📈 Visualizations & Diagnostic Tools
+📈 Visualizations Included
+* Bottleneck Proportion: A donut chart showing the split between on-time and delayed orders.
+* Shipping Mode Impact: Countplots comparing bottlenecks across various logistics tiers.
+* Market Distribution: Violin plots showing the density and quartiles of shipping durations per global market.
+* Regression Analysis: Scatter plots identifying if higher product prices correlate with faster shipping.
 
-The project utilizes advanced statistical plotting to transform raw logistics data into actionable strategy. Each visualization serves a specific diagnostic purpose:
-
-| Visualization | Analytical Purpose | Technical Implementation |
-| :--- | :--- | :--- |
-| **Bottleneck Proportion** | Quantifies the scale of delivery failures across the entire ecosystem. | **Donut Chart** representing the split between On-time vs. Delayed orders. |
-| **Shipping Mode Impact** | Identifies which logistics tiers (First Class, Standard, etc.) are underperforming. | **Grouped Countplots** comparing bottleneck frequency across service levels. |
-| **Market Distribution** | Visualizes lead-time variance and regional volatility. | **Violin Plots** showing the density and interquartile range of shipping durations per market. |
-| **Price vs. Speed Correlation** | Tests the hypothesis that premium products receive prioritized shipping. | **Regression/Scatter Plots** mapping Product Price against Actual Shipping Days. |
 
 #### 🔍 Deep Dive: Operational Indicators
 * **The "Second Class" Paradox:** Analysis reveals that "Second Class" shipping often experiences higher variance than "Standard Class," suggesting a need for route optimization in mid-tier logistics.
