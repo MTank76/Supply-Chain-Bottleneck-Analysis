@@ -90,6 +90,7 @@ Based on the notebook execution, the following findings were discovered:
 │   └── DataCoSupplyChainDataset.csv  # Raw Input Data (Source)
 ├── Processed_Supply_Chain_Data.csv   # Cleaned data exported after analysis
 └── app.py                            # Streamlit Multi-page Web Application
+└── requirements.txt                  # Project Dependencies
 └── README.md                         # Project documentation
 ```
 ---
